@@ -9,7 +9,7 @@
                 <author>Hartmann von Aue</author>
                 <respStmt>
                     <resp>transcription</resp>
-                    <persName>Emilio González Miranda</persName>
+                    <persName>Claudia Casado Franco</persName>
                 </respStmt>
             </titleStmt>
             <publicationStmt>
@@ -42,7 +42,6 @@
                 <cb n="a"/>
                 <lg>
                     <l n="1" xml:id="l_1"><lb n="19"/><w>recht guet</w><note ana="hc:TranscriptionNote" target="#l_1">Sechs Zeilen weiter ob, im für Titel oder Initiale freigelassenen Raum hat eine neuzeitliche Hand mit feinem Bleistiftzug geschrieben: "SWer an"</note></l>
-                    <!-- Comprobar: si realmente es moderno, lo dejamos así, si pudiera ser de época, podríamos ponerlo como "supplied".     -->
                     <l n="2"><lb n="20"/><w>Wendet</w><w>ſeinen</w><w>muet</w></l>
                 </lg>
                 <lg>
@@ -203,6 +202,7 @@
                 <lg>
                     <l n="81"><lb n="14"/><w>In</w><w>ein</w><w>kematen</w><w>da</w></l>
                     <l n="82"><lb n="15"/><w><choice><orig>V</orig><reg>U</reg></choice>nd</w><w>hetten</w><w>ſich</w><w>ſlaffen</w><w><del rendition="hc:Strikethrough">d</del>a</w></l>
+                    <!--Revisado Victor 18/10/19. Claudia, fíjate en cómo he hecho la inicial en el v. 70; haz igual las siguientes. Fíjate que en 'worden' (v. 80) o en 'ere' (v. 76) eso es una 'r', no una 'z'. En cuanto a separación de palabras (p.ej. v. 75 'vntter'): no vamos a estar midiendo nanómetros: cuando no está del todo claro, se transcribe como debería ser (si es una palabra, junto; si son dos, separado).-->
                 </lg>
                 <lg>
                     <l n="83"><lb n="16"/><w>Mer</w><w>durch</w><w>geſellſchaft</w><w>gelayt</w></l>
@@ -306,7 +306,7 @@
                 <lg>
                     <l n="133"><lb n="25"/><w><choice><orig>V</orig><reg>u</reg></choice>nd</w><w>wie</w><w>wir</w><w>des</w><w>vergaſſen</w></l>
                     <l n="134"><lb n="26"/><w>Das</w><w>wir</w><w>ſtyll</w><w>ſaſſen</w></l>
-                    <!--Revisado Victor 29/03/2020. Emilio: repasa estos versos antes de seguir. Fíjate en cómo he hecho la inicial en el v. 70; haz igual las siguientes (porque creo que faltan todas).  -->
+                    <!--Revisado Victor 20/12/2019     -->
                 </lg>
                 <lg>
                     <l n="135"><lb/><w/><w/><w/><w/><w/><w/></l>
