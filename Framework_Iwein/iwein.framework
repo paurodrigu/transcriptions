@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<serialized version="21.1" xml:space="preserve">
+<serialized version="22.0" xml:space="preserve">
 	<serializableOrderedMap>
 		<entry>
 			<String>document.types</String>
@@ -15,7 +15,9 @@
 						<null/>
 					</field>
 					<field name="classpath">
-						<String-array/>
+						<String-array>
+							<String>${framework}/numbering-0.1.jar</String>
+						</String-array>
 					</field>
 					<field name="parentClassLoaderID">
 						<null/>
@@ -515,7 +517,7 @@ else ancestor::l</String>
 														<serializableOrderedMap>
 															<entry>
 																<String>fragment</String>
-																<String>&lt;note xmlns="http://www.tei-c.org/ns/1.0" ana="${ask('type of note:', combobox,('hc:Gloss':'Gloss';'hc:NotaBene':'Nota Bene'; 'hc:Manicula':'Manicula' ; 'hc:Footnote':'Footnote' ; 'hc:Endnote':'Endnote' ; 'hc:Comment':'Editorial General Comment' ; 'hc:TextCriticalNote':'Editorial Text Critical Note' ; 'hc:TranscriptionNote':'Editorial Transcription Note' ; 'hc:WitnessesNote':'Editorial Witnesses Note' ; 'hc:LociNote': 'Editorial note about textual loci' ; 'hc:FontesNote': 'Editorial Note about Sources' ; 'hc:SimiliaNote': 'Editorial Note about Parallels' ; 'hc:TestimoniaNote': 'Editorial Note about Reception' ; 'hc:BibliocalNote': 'Editorial Note about Bibliocal Sources') )}" resp="${ask('who is responsible:')}">${ask('Note content:')}&lt;/note></String>
+																<String>&lt;note xmlns="http://www.tei-c.org/ns/1.0" ana="${ask('type of note:', combobox,('hc:Gloss':'Gloss';'hc:NotaBene':'Nota Bene'; 'hc:Manicula':'Manicula' ; 'hc:Footnote':'Footnote' ; 'hc:Endnote':'Endnote' ; 'hc:Comment':'Editorial General Comment' ; 'hc:TextCriticalNote':'Editorial Text Critical Note' ; 'hc:TranscriptionNote':'Editorial Transcription Note' ; 'hc:WitnessesNote':'Editorial Witnesses Note' ; 'hc:LociNote': 'Editorial note about textual loci' ; 'hc:FontesNote': 'Editorial Note about Sources' ; 'hc:SimiliaNote': 'Editorial Note about Parallels' ; 'hc:TestimoniaNote': 'Editorial Note about Reception' ; 'hc:BibliocalNote': 'Editorial Note about Bibliocal Sources') )}" resp="${ask('who is responsible:')}" target="${ask('@target:')}">${ask('Note content:')}&lt;/note></String>
 															</entry>
 															<entry>
 																<String>insertLocation</String>
@@ -1535,10 +1537,10 @@ line2</String>
 									</action>
 									<action>
 										<field name="id">
-											<String>line_number</String>
+											<String>lb_number</String>
 										</field>
 										<field name="name">
-											<String>line_number</String>
+											<String>lb_number</String>
 										</field>
 										<field name="description">
 											<String>Inserts the attribute n for line numbers. SHORTCUT: CTRL + SHIFT + N</String>
@@ -1578,7 +1580,7 @@ line2</String>
 															</entry>
 															<entry>
 																<String>value</String>
-																<String>${ask("line number:")}</String>
+																<String>${ask('Line Number: ', generic, '${xpath_eval(string(preceding::lb[1]/@n + 1))}')}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -3589,67 +3591,6 @@ pc2</String>
 									</action>
 									<action>
 										<field name="id">
-											<String>line-auto-num</String>
-										</field>
-										<field name="name">
-											<String>line-auto-num</String>
-										</field>
-										<field name="description">
-											<String></String>
-										</field>
-										<field name="largeIconPath">
-											<String></String>
-										</field>
-										<field name="smallIconPath">
-											<String></String>
-										</field>
-										<field name="accessKey">
-											<String></String>
-										</field>
-										<field name="accelerator">
-											<null/>
-										</field>
-										<field name="actionModes">
-											<actionMode-array>
-												<actionMode>
-													<field name="xpathCondition">
-														<String></String>
-													</field>
-													<field name="argValues">
-														<serializableOrderedMap>
-															<entry>
-																<String>script</String>
-																<String>&lt;?xml version="1.0" encoding="UTF-8"?>
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:tei="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="xs"
-    version="2.0">
-    
-    &lt;xsl:template match="//tei:lb">
-        &lt;tei:lb>&lt;xsl:number value="2"/>&lt;/tei:lb>
-    &lt;/xsl:template>
-    
-&lt;/xsl:stylesheet></String>
-															</entry>
-															<entry>
-																<String>sourceLocation</String>
-																<String>//lb</String>
-															</entry>
-														</serializableOrderedMap>
-													</field>
-													<field name="operationID">
-														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
-													</field>
-												</actionMode>
-											</actionMode-array>
-										</field>
-										<field name="enabledInReadOnlyContext">
-											<Boolean>false</Boolean>
-										</field>
-									</action>
-									<action>
-										<field name="id">
 											<String>-quotation-mark-abbr</String>
 										</field>
 										<field name="name">
@@ -4785,6 +4726,276 @@ compl1(3)</String>
 											<Boolean>false</Boolean>
 										</field>
 									</action>
+									<action>
+										<field name="id">
+											<String>line_number_spalte</String>
+										</field>
+										<field name="name">
+											<String>Versnummer - Spalte</String>
+										</field>
+										<field name="description">
+											<String>Nummeriert die Verse von der Caret bis zu Ende der Spalte</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M1 M2 PLUS</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>Attribute</String>
+																<String>n</String>
+															</entry>
+															<entry>
+																<String>Element</String>
+																<String>l</String>
+															</entry>
+															<entry>
+																<String>Limit</String>
+																<String>cb</String>
+															</entry>
+															<entry>
+																<String>Prefix</String>
+																<String></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ubheidelberg.heieditions.numbering</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>lb_number_spalte</String>
+										</field>
+										<field name="name">
+											<String>Zeilennummer - Spalte</String>
+										</field>
+										<field name="description">
+											<String>Nummeriert die Zeilen von der Caret bis zu Ende der Spalte</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M1 M2 MINUS</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>Attribute</String>
+																<String>n</String>
+															</entry>
+															<entry>
+																<String>Element</String>
+																<String>lb</String>
+															</entry>
+															<entry>
+																<String>Limit</String>
+																<String>cb</String>
+															</entry>
+															<entry>
+																<String>Prefix</String>
+																<String></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ubheidelberg.heieditions.numbering</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>lb_number_all</String>
+										</field>
+										<field name="name">
+											<String>Zeilennummer All</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>scenarioNames</String>
+																<String>lb_n</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteTransformationScenariosOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>l_number_all</String>
+										</field>
+										<field name="name">
+											<String>Versnummer All</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>scenarioNames</String>
+																<String>l_n</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteTransformationScenariosOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>hi</String>
+										</field>
+										<field name="name">
+											<String>hi</String>
+										</field>
+										<field name="description">
+											<String>Ein hi tag</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;hi xmlns="http://www.tei-c.org/ns/1.0" rendition="${ask('Rendition:', combobox,('hc:RedStroke':'hc:RedStroke';   
+'hc:Cadel' : 'hc:Cadel';
+'hc:DoubleUnderlined': 'hc:DoubleUnderlined';
+'hc:Enlarged' : 'hc:Enlarged';
+'hc:LitteraNotabilior' : 'hc:LitteraNotabilior';
+'hc:Oblique' : 'hc:Oblique';
+'hc:ProminentLowerPart' : 'hc:ProminentLowerPart';
+'hc:ProminentUpperPart' : 'hc:ProminentUpperPart';
+'hc:RedRetrace' : 'hc:RedRetrace';
+'hc:RedStrikethrough' : 'hc:RedStrikethrough';
+'hc:RedStroke' : 'hc:RedStroke';
+'hc:RedUnderlined' : 'hc:RedUnderlined';
+'hc:Subscript' :'hc:Subscript';
+'hc:Superscript' : 'hc:Superscript';
+'hc:Underlined' : 'hc:Underlined';
+'hc:Versal' : 'hc:Versal'
+))}">&lt;/hi></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
 								</action-array>
 							</field>
 							<field name="menubarDescriptor">
@@ -4973,6 +5184,11 @@ compl1(3)</String>
 															<toolbarSeparator/>
 															<toolbarItem>
 																<field name="actionID">
+																	<String>hi</String>
+																</field>
+															</toolbarItem>
+															<toolbarItem>
+																<field name="actionID">
 																	<String>decoration</String>
 																</field>
 															</toolbarItem>
@@ -5063,7 +5279,7 @@ compl1(3)</String>
 															</toolbarItem>
 															<toolbarItem>
 																<field name="actionID">
-																	<String>line_number</String>
+																	<String>lb_number</String>
 																</field>
 															</toolbarItem>
 															<toolbarSeparator/>
@@ -5379,6 +5595,28 @@ compl1(3)</String>
 														<toolbarEntry-array>
 															<toolbarItem>
 																<field name="actionID">
+																	<String>lb_number_all</String>
+																</field>
+															</toolbarItem>
+															<toolbarItem>
+																<field name="actionID">
+																	<String>l_number_all</String>
+																</field>
+															</toolbarItem>
+															<toolbarSeparator/>
+															<toolbarItem>
+																<field name="actionID">
+																	<String>lb_number_spalte</String>
+																</field>
+															</toolbarItem>
+															<toolbarItem>
+																<field name="actionID">
+																	<String>line_number_spalte</String>
+																</field>
+															</toolbarItem>
+															<toolbarSeparator/>
+															<toolbarItem>
+																<field name="actionID">
 																	<String>facsimile</String>
 																</field>
 															</toolbarItem>
@@ -5648,6 +5886,172 @@ compl1(3)</String>
 									<String-array/>
 								</field>
 							</scenario>
+							<scenario>
+								<field name="advancedOptionsMap">
+									<null/>
+								</field>
+								<field name="name">
+									<String>lb_n</String>
+								</field>
+								<field name="baseURL">
+									<String></String>
+								</field>
+								<field name="footerURL">
+									<String></String>
+								</field>
+								<field name="fOPMethod">
+									<String>pdf</String>
+								</field>
+								<field name="fOProcessorName">
+									<String>Apache FOP</String>
+								</field>
+								<field name="headerURL">
+									<String></String>
+								</field>
+								<field name="inputXSLURL">
+									<String>${framework}/xslt/lb-n.xsl</String>
+								</field>
+								<field name="inputXMLURL">
+									<String>${currentFileURL}</String>
+								</field>
+								<field name="defaultScenario">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="isFOPPerforming">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="type">
+									<String>XSL</String>
+								</field>
+								<field name="saveAs">
+									<Boolean>true</Boolean>
+								</field>
+								<field name="openInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="outputResource">
+									<String>${currentFileURL}</String>
+								</field>
+								<field name="openOtherLocationInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="locationToOpenInBrowserURL">
+									<null/>
+								</field>
+								<field name="openInEditor">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInHTMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInXMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInSVGPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInResultSetPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="useXSLTInput">
+									<Boolean>true</Boolean>
+								</field>
+								<field name="xsltParams">
+									<list/>
+								</field>
+								<field name="cascadingStylesheets">
+									<String-array/>
+								</field>
+								<field name="xslTransformer">
+									<String>Saxon-PE</String>
+								</field>
+								<field name="extensionURLs">
+									<String-array/>
+								</field>
+							</scenario>
+							<scenario>
+								<field name="advancedOptionsMap">
+									<null/>
+								</field>
+								<field name="name">
+									<String>l_n</String>
+								</field>
+								<field name="baseURL">
+									<String></String>
+								</field>
+								<field name="footerURL">
+									<String></String>
+								</field>
+								<field name="fOPMethod">
+									<String>pdf</String>
+								</field>
+								<field name="fOProcessorName">
+									<String>Apache FOP</String>
+								</field>
+								<field name="headerURL">
+									<String></String>
+								</field>
+								<field name="inputXSLURL">
+									<String>${framework}/xslt/l_n.xsl</String>
+								</field>
+								<field name="inputXMLURL">
+									<String>${currentFileURL}</String>
+								</field>
+								<field name="defaultScenario">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="isFOPPerforming">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="type">
+									<String>XSL</String>
+								</field>
+								<field name="saveAs">
+									<Boolean>true</Boolean>
+								</field>
+								<field name="openInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="outputResource">
+									<String>${currentFileURL}</String>
+								</field>
+								<field name="openOtherLocationInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="locationToOpenInBrowserURL">
+									<null/>
+								</field>
+								<field name="openInEditor">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInHTMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInXMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInSVGPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInResultSetPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="useXSLTInput">
+									<Boolean>true</Boolean>
+								</field>
+								<field name="xsltParams">
+									<list/>
+								</field>
+								<field name="cascadingStylesheets">
+									<String-array/>
+								</field>
+								<field name="xslTransformer">
+									<String>Saxon-PE</String>
+								</field>
+								<field name="extensionURLs">
+									<String-array/>
+								</field>
+							</scenario>
 						</scenario-array>
 					</field>
 					<field name="validationScenarios">
@@ -5669,62 +6073,6 @@ compl1(3)</String>
 											<field name="validationEngine">
 												<validationEngine>
 													<field name="engineType">
-														<String>Xerces</String>
-													</field>
-													<field name="allowsAutomaticValidation">
-														<Boolean>true</Boolean>
-													</field>
-												</validationEngine>
-											</field>
-											<field name="allowAutomaticValidation">
-												<Boolean>true</Boolean>
-											</field>
-											<field name="extensions">
-												<null/>
-											</field>
-											<field name="validationSchema">
-												<validationUnitSchema>
-													<field name="dtdSchemaPublicID">
-														<null/>
-													</field>
-													<field name="schematronPhase">
-														<null/>
-													</field>
-													<field name="type">
-														<Integer>7</Integer>
-													</field>
-													<field name="uri">
-														<String>${framework}/schemas/line.sch</String>
-													</field>
-												</validationUnitSchema>
-											</field>
-										</validationUnit>
-									</list>
-								</field>
-								<field name="type">
-									<String>Validation_scenario</String>
-								</field>
-								<field name="name">
-									<String>line</String>
-								</field>
-							</validationScenario>
-							<validationScenario>
-								<field name="pairs">
-									<list>
-										<validationUnit>
-											<field name="validationType">
-												<validationUnitType>
-													<field name="validationInputType">
-														<String>text/xml</String>
-													</field>
-												</validationUnitType>
-											</field>
-											<field name="url">
-												<String>${currentFileURL}</String>
-											</field>
-											<field name="validationEngine">
-												<validationEngine>
-													<field name="engineType">
 														<String>&lt;Default engine></String>
 													</field>
 													<field name="allowsAutomaticValidation">
@@ -5781,7 +6129,7 @@ compl1(3)</String>
 														<Integer>7</Integer>
 													</field>
 													<field name="uri">
-														<String>${framework}/schemas/line.sch</String>
+														<String>${framework}/schemas/tokenization.sch</String>
 													</field>
 												</validationUnitSchema>
 											</field>
@@ -5792,14 +6140,14 @@ compl1(3)</String>
 									<String>Validation_scenario</String>
 								</field>
 								<field name="name">
-									<String>full</String>
+									<String>iwein</String>
 								</field>
 							</validationScenario>
 						</validationScenario-array>
 					</field>
 					<field name="defaultValidationScenarios">
 						<list>
-							<String>full</String>
+							<String>iwein</String>
 						</list>
 					</field>
 					<field name="defaultTransformationScenarios">
